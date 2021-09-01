@@ -51,11 +51,16 @@ body {
 .btn__submitValid {
   background-color: rgb(54, 163, 54);
 }
+.btn__cta {
+  background-color: rgb(54, 163, 54);
+  color: #fff;
+}
 .error {
   position: relative;
-  top: -5px;
-  padding-left: 5px;
-  margin: 7px auto;
-  color: #ffabab;
+  top: -10px;
+  padding-left: 7px;
+  margin: 5px auto;
+  color: #e49090;
   font-size: 13px;
+  font-style: italic;
 }
