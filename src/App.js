@@ -31,7 +31,7 @@ const App = () => {
       {audioStatus && <p className="">{audioStatus}</p>}
       <div className="">
         <div style={{ margin: "0px", width: "100%" }}>
-          <form onSubmit={(e) => handleSubmit(e, audioData)}>
+          <form onSubmit={(e) => handleSubmit(e)(audioData)}>
             <label
               data-testid="input_label"
               htmlFor="email"
@@ -45,7 +45,7 @@ const App = () => {
               type="email"
               placeholder="Enter Email"
               className="microphone__input"
-              onBlur={handleBlur}
+              onBlur={(e) => handleBlur(e)()}
               onChange={handleChange()}
               value={inputValues.email || ""}
             />

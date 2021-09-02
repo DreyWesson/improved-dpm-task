@@ -17,7 +17,8 @@ export const useForm = ({ validations }) => {
     });
   };
 
-  const handleBlur = async (valid = true, newErrors = {}) => {
+  const handleBlur = (e) => async (valid = true, newErrors = {}) => {
+    console.log(e);
     if (validations) {
       for (const key in validations) {
         // get input value where $key is the input field name
@@ -43,7 +44,7 @@ export const useForm = ({ validations }) => {
     setErrors({});
   };
 
-  const handleSubmit = async (e, audioData) => {
+  const handleSubmit = (e) => async (audioData) => {
     e.preventDefault();
     console.log(audioData);
     const validate = Boolean(
