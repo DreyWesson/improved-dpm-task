@@ -18,7 +18,6 @@ export const useForm = ({ validations }) => {
   };
 
   const handleBlur = (e) => async (valid = true, newErrors = {}) => {
-    console.log(e);
     if (validations) {
       for (const key in validations) {
         // get input value where $key is the input field name
@@ -46,12 +45,11 @@ export const useForm = ({ validations }) => {
 
   const handleSubmit = (e) => async (audioData) => {
     e.preventDefault();
-    console.log(audioData);
     const validate = Boolean(
       errors && Object.keys(errors).length === 0 && audioData
     );
-
-    if (!audioData) setAudioStatus("Oops, record an audio.");
+    console.log(validate);
+    if (!audioData) setAudioStatus("Oops, record an audio.") && handleBlur();
     if (validate) {
       const result = { audioData, inputValues };
       // const formData = new FormData();
@@ -59,7 +57,7 @@ export const useForm = ({ validations }) => {
       const postAudio1 = await api.postAudio(result);
       setInputValues({});
       console.log(postAudio1);
-    } else handleBlur();
+    }
   };
 
   return {

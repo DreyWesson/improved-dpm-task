@@ -40,6 +40,7 @@ const App = () => {
               Email
             </label>
             <input
+              autoFocus
               name="email"
               data-testid="input"
               type="email"
