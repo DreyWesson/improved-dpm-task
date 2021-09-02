@@ -1,9 +1,9 @@
 import { useState } from "react";
-// import * as api from "../api/index";
+import * as api from "../api/index";
 export const useForm = ({ validations }) => {
   const [inputValues, setInputValues] = useState({});
   const [errors, setErrors] = useState({});
-  // const [audioStatus, setAudioStatus] = useState("Record an Audio");
+  const [audioStatus, setAudioStatus] = useState("Record an Audio");
 
   const handleChange = (key, sanitizeFn) => (e) => {
     // sanitize input value if necessary
@@ -41,24 +41,23 @@ export const useForm = ({ validations }) => {
     setErrors({});
   };
 
-  // const handleSubmit = async (e, audioData) => {
-  //   e.preventDefault();
-  //   // e.persist();
-  //   console.log(audioData);
-  //   const validate = Boolean(
-  //     errors && Object.keys(errors).length === 0 && audioData
-  //   );
+  const handleSubmit = async (e, audioData) => {
+    e.preventDefault();
+    console.log(audioData);
+    const validate = Boolean(
+      errors && Object.keys(errors).length === 0 && audioData
+    );
 
-  //   if (!audioData) setAudioStatus("Oops, record an audio.");
-  //   if (validate) {
-  //     const result = { audioData, inputValues };
-  //     // const formData = new FormData();
-  //     // formData.append("audio-data", result);
-  //     const postAudio1 = await api.postAudio(result);
-  //     setInputValues({});
-  //     console.log(postAudio1);
-  //   } else handleBlur();
-  // };
+    if (!audioData) setAudioStatus("Oops, record an audio.");
+    if (validate) {
+      const result = { audioData, inputValues };
+      // const formData = new FormData();
+      // formData.append("audio-data", result);
+      const postAudio1 = await api.postAudio(result);
+      setInputValues({});
+      console.log(postAudio1);
+    } else handleBlur();
+  };
 
   return {
     inputValues,
@@ -66,7 +65,7 @@ export const useForm = ({ validations }) => {
     handleBlur,
     handleChange,
     errors,
-    // handleSubmit,
-    // audioStatus,
+    handleSubmit,
+    audioStatus,
   };
 };
