@@ -46,7 +46,7 @@ const App = () => {
               placeholder="Enter Email"
               className="microphone__input"
               onBlur={handleBlur}
-              onChange={handleChange("email")}
+              onChange={handleChange()}
               value={inputValues.email || ""}
             />
             {/* Helper text */}

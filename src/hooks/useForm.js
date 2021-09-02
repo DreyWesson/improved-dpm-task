@@ -5,13 +5,15 @@ export const useForm = ({ validations }) => {
   const [errors, setErrors] = useState({});
   const [audioStatus, setAudioStatus] = useState("Record an Audio");
 
-  const handleChange = (key, sanitizeFn) => (e) => {
+  const handleChange = (sanitizeFn) => ({ target }) => {
+    const { value, name } = target;
+
     // sanitize input value if necessary
-    const value = sanitizeFn ? sanitizeFn(e.target.value) : e.target.value;
+    const sanitizedValue = sanitizeFn ? sanitizeFn(value) : value;
     // set values of input field
     setInputValues({
       ...inputValues,
-      [key]: value,
+      [name]: sanitizedValue,
     });
   };
 
